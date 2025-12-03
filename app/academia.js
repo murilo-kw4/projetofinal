@@ -13,11 +13,11 @@ import {
 
 // Paleta de Cores (Reutilizada)
 const COLORS = {
-  BACKGROUND: "#1A1A1A", 
-  TEXT_PRIMARY: "#FFFFFF", 
+  BACKGROUND: "#1A1A1A",
+  TEXT_PRIMARY: "#FFFFFF",
   ACCENT_BRIGHT: "#FF7F00", // Laranja Vibrante
-  SURFACE: "#282828", 
-  TEXT_SECONDARY: "#C7C7CC", 
+  SURFACE: "#282828",
+  TEXT_SECONDARY: "#C7C7CC",
   ACCENT_DARK: "#D46900",
   SUCCESS: "#4CAF50", // Verde para Vantagens
   DANGER: "#FF3B30",  // Vermelho para Desvantagens
@@ -42,7 +42,7 @@ const localAcademies = [
       'Pouca variedade de aulas coletivas',
       'Equipamentos podem ser mais básicos',
     ],
-    imageUrl: "https://via.placeholder.com/300x150/282828/FF7F00?text=VR+POWER",
+    localImage: require("../assets/powergym.png"),
   },
   {
     id: 'A02',
@@ -61,71 +61,71 @@ const localAcademies = [
       'Horário de fechamento mais cedo (20:30)',
       'Foco na musculação pode ser menor do que em academias dedicadas',
     ],
-    imageUrl: "https://via.placeholder.com/300x150/282828/FF7F00?text=CT+JULIANO",
+    localImage: require("../assets/ctju.png"),
   },
-  {
-    id: 'A03',
+{
+  id: 'A03',
     title: 'Academia Gowfit',
-    subtitle: 'Musculação Especializada e Espaço Amplo',
-    description: 'Promete musculação especializada com aparelhos modernos e espaço amplo. Boa opção para quem busca uma experiência de treino mais confortável e com estrutura.',
-    hours: '05:00 - 23:00',
-    tags: ['Musculação', 'Moderna', 'Ampla'],
-    advantages: [
-      'Espaço amplo e aparelhos mais novos (simulado)',
-      'Ótima para quem foca apenas em musculação',
-      'Horário estendido similar ao concorrente',
-    ],
-    disadvantages: [
-      'Preço no plano básico um pouco superior ao concorrente (R$ 59,90 Wellhub)',
-      'Possível maior concentração de pessoas devido à reputação de espaço moderno',
-      'Pode faltar aulas específicas de nicho (Boxe, Dança)',
-    ],
-    imageUrl: "https://via.placeholder.com/300x150/282828/FF7F00?text=GOWFIT",
+      subtitle: 'Musculação Especializada e Espaço Amplo',
+        description: 'Promete musculação especializada com aparelhos modernos e espaço amplo. Boa opção para quem busca uma experiência de treino mais confortável e com estrutura.',
+          hours: '05:00 - 23:00',
+            tags: ['Musculação', 'Moderna', 'Ampla'],
+              advantages: [
+                'Espaço amplo e aparelhos mais novos (simulado)',
+                'Ótima para quem foca apenas em musculação',
+                'Horário estendido similar ao concorrente',
+              ],
+                disadvantages: [
+                  'Preço no plano básico um pouco superior ao concorrente (R$ 59,90 Wellhub)',
+                  'Possível maior concentração de pessoas devido à reputação de espaço moderno',
+                  'Pode faltar aulas específicas de nicho (Boxe, Dança)',
+                ],
+                  localImage: require("../assets/gowfit.png"),
   },
-  {
-    id: 'A04',
+{
+  id: 'A04',
     title: 'Mais Fit Life Academia Ltda',
-    subtitle: 'Treinamento Funcional e Aeróbicos Variados',
-    description: 'Academia com foco em diferentes tipos de treinamento funcional e aeróbicos, oferecendo uma rotina diversificada de exercícios e aulas coletivas.',
-    hours: '05:30 - 22:00',
-    tags: ['Funcional', 'Fit Training', 'Aeróbicos', 'Diversidade'],
-    advantages: [
-      'Grande variedade de aulas e modalidades',
-      'Ideal para quem se entedia facilmente com a rotina de musculação',
-      'Bom horário de fechamento (22:00)',
-    ],
-    disadvantages: [
-      'Horário de pico pode ter lotação nas salas de aula',
-      'Menos foco e espaço dedicado à musculação pura',
-      'O preço do plano Wellhub é o mais acessível, o que pode indicar alta lotação',
-    ],
-    imageUrl: "https://via.placeholder.com/300x150/282828/FF7F00?text=MAIS+FIT",
+      subtitle: 'Treinamento Funcional e Aeróbicos Variados',
+        description: 'Academia com foco em diferentes tipos de treinamento funcional e aeróbicos, oferecendo uma rotina diversificada de exercícios e aulas coletivas.',
+          hours: '05:30 - 22:00',
+            tags: ['Funcional', 'Fit Training', 'Aeróbicos', 'Diversidade'],
+              advantages: [
+                'Grande variedade de aulas e modalidades',
+                'Ideal para quem se entedia facilmente com a rotina de musculação',
+                'Bom horário de fechamento (22:00)',
+              ],
+                disadvantages: [
+                  'Horário de pico pode ter lotação nas salas de aula',
+                  'Menos foco e espaço dedicado à musculação pura',
+                  'O preço do plano Wellhub é o mais acessível, o que pode indicar alta lotação',
+                ],
+                  localImage: require("../assets/maisfit.png"),
   },
 ];
 
 // Componente individual para o Card da Academia
 const AcademyCard = ({ item, onPress }) => (
   <TouchableOpacity style={styles.card} onPress={onPress}>
-    <Image 
-      source={{ uri: item.imageUrl }} 
-      style={styles.cardImage} 
+    <Image
+      source={item.localImage ? item.localImage : { uri: item.imageUrl }}
+      style={styles.cardImage}
       resizeMode="cover"
     />
-    
+
     <View style={styles.cardContent}>
       <Text style={styles.cardTitle}>{item.title}</Text>
       <Text style={styles.cardSubtitle}>{item.subtitle}</Text>
-      
+
       <View style={styles.tagRow}>
         {item.tags.map((tag, index) => (
-            <View key={index} style={styles.tagContainer}>
-                <Text style={styles.tagText}>{tag}</Text>
-            </View>
+          <View key={index} style={styles.tagContainer}>
+            <Text style={styles.tagText}>{tag}</Text>
+          </View>
         ))}
       </View>
     </View>
     <View style={styles.infoHours}>
-        <Text style={styles.infoHoursText}>🕒 {item.hours}</Text>
+      <Text style={styles.infoHoursText}>🕒 {item.hours}</Text>
     </View>
   </TouchableOpacity>
 );
@@ -133,42 +133,42 @@ const AcademyCard = ({ item, onPress }) => (
 
 export default function AcademiasPV() {
   const [modalVisible, setModalVisible] = useState(false);
-  const [selectedAcademy, setSelectedAcademy] = useState(null); 
+  const [selectedAcademy, setSelectedAcademy] = useState(null);
 
-  
+
   const handleSelectAcademy = (academy) => {
-    setSelectedAcademy(academy); 
-    setModalVisible(true); 
+    setSelectedAcademy(academy);
+    setModalVisible(true);
   };
-  
+
   const closeModal = () => {
     setModalVisible(false);
     setSelectedAcademy(null);
   };
-  
+
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      <FlatList 
+      <FlatList
         data={localAcademies}
         keyExtractor={item => item.id}
         renderItem={({ item }) => (
-          <AcademyCard 
-            item={item} 
+          <AcademyCard
+            item={item}
             onPress={() => handleSelectAcademy(item)}
           />
         )}
         contentContainerStyle={styles.listContainer}
         ListHeaderComponent={() => (
-            <View>
-                <Text style={styles.headerTitle}>Academias em Presidente Venceslau</Text>
-                <Text style={styles.headerSubtitle}>
-                    Análise comparativa das principais academias da região para ajudar você a escolher a melhor para o seu treino.
-                </Text>
-            </View>
+          <View>
+            <Text style={styles.headerTitle}>Academias em Presidente Venceslau</Text>
+            <Text style={styles.headerSubtitle}>
+              Análise comparativa das principais academias da região para ajudar você a escolher a melhor para o seu treino.
+            </Text>
+          </View>
         )}
       />
-      
+
       {/* 🚨 COMPONENTE MODAL DE DETALHES COM VANTAGENS/DESVANTAGENS */}
       <Modal
         animationType="slide"
@@ -178,7 +178,7 @@ export default function AcademiasPV() {
       >
         <View style={styles.modalOverlay}>
           <View style={styles.modalContent}>
-            
+
             <View style={styles.modalHeader}>
               <Text style={styles.modalTitle}>{selectedAcademy?.title}</Text>
               <TouchableOpacity onPress={closeModal} style={styles.closeButton}>
@@ -187,39 +187,39 @@ export default function AcademiasPV() {
             </View>
 
             <ScrollView contentContainerStyle={styles.modalScroll}>
-                
-                {/* Descrição e Horário */}
-                <Text style={styles.modalTextDescription}>{selectedAcademy?.description}</Text>
-                <Text style={styles.modalHours}>🕒 **Horário:** {selectedAcademy?.hours}</Text>
+
+              {/* Descrição e Horário */}
+              <Text style={styles.modalTextDescription}>{selectedAcademy?.description}</Text>
+              <Text style={styles.modalHours}>🕒 **Horário:** {selectedAcademy?.hours}</Text>
 
 
-                {/* VANTAGENS */}
-                <Text style={[styles.sectionHeaderModal, {color: COLORS.SUCCESS}]}>👍 Vantagens</Text>
-                {selectedAcademy?.advantages.map((adv, index) => (
-                    <View key={index} style={styles.bulletItem}>
-                        <Text style={[styles.bulletPoint, {color: COLORS.SUCCESS}]}>•</Text>
-                        <Text style={styles.listItem}>{adv}</Text>
-                    </View>
-                ))}
-                
-                {/* DESVANTAGENS */}
-                <Text style={[styles.sectionHeaderModal, {color: COLORS.DANGER}]}>👎 Desvantagens</Text>
-                {selectedAcademy?.disadvantages.map((disadv, index) => (
-                    <View key={index} style={styles.bulletItem}>
-                        <Text style={[styles.bulletPoint, {color: COLORS.DANGER}]}>•</Text>
-                        <Text style={styles.listItem}>{disadv}</Text>
-                    </View>
-                ))}
-                
-                {/* Rodapé do Modal */}
-                <View style={styles.modalFooter}>
-                    <Text style={styles.modalTextFooter}>
-                        *Esta análise é baseada em informações públicas e tipos de academia. Verifique preços e estrutura pessoalmente.
-                    </Text>
+              {/* VANTAGENS */}
+              <Text style={[styles.sectionHeaderModal, { color: COLORS.SUCCESS }]}>👍 Vantagens</Text>
+              {selectedAcademy?.advantages.map((adv, index) => (
+                <View key={index} style={styles.bulletItem}>
+                  <Text style={[styles.bulletPoint, { color: COLORS.SUCCESS }]}>•</Text>
+                  <Text style={styles.listItem}>{adv}</Text>
                 </View>
+              ))}
+
+              {/* DESVANTAGENS */}
+              <Text style={[styles.sectionHeaderModal, { color: COLORS.DANGER }]}>👎 Desvantagens</Text>
+              {selectedAcademy?.disadvantages.map((disadv, index) => (
+                <View key={index} style={styles.bulletItem}>
+                  <Text style={[styles.bulletPoint, { color: COLORS.DANGER }]}>•</Text>
+                  <Text style={styles.listItem}>{disadv}</Text>
+                </View>
+              ))}
+
+              {/* Rodapé do Modal */}
+              <View style={styles.modalFooter}>
+                <Text style={styles.modalTextFooter}>
+                  *Esta análise é baseada em informações públicas e tipos de academia. Verifique preços e estrutura pessoalmente.
+                </Text>
+              </View>
 
             </ScrollView>
-            
+
           </View>
         </View>
       </Modal>
@@ -231,7 +231,7 @@ export default function AcademiasPV() {
 const styles = StyleSheet.create({
   safeArea: { flex: 1, backgroundColor: COLORS.BACKGROUND },
   listContainer: { paddingHorizontal: 20, paddingVertical: 10, paddingBottom: 50 },
-  
+
   headerTitle: { fontSize: 30, color: COLORS.ACCENT_BRIGHT, fontWeight: "800", marginTop: 20, marginBottom: 10, },
   headerSubtitle: { fontSize: 16, color: COLORS.TEXT_SECONDARY, fontWeight: "400", marginBottom: 25, },
 
@@ -241,21 +241,21 @@ const styles = StyleSheet.create({
   cardContent: { padding: 15, },
   cardTitle: { fontSize: 20, color: COLORS.TEXT_PRIMARY, fontWeight: "700", marginBottom: 5, },
   cardSubtitle: { fontSize: 14, color: COLORS.TEXT_SECONDARY, marginBottom: 10, },
-  
+
   tagRow: { flexDirection: 'row', flexWrap: 'wrap', marginTop: 5 },
   tagContainer: { alignSelf: 'flex-start', backgroundColor: COLORS.ACCENT_DARK, paddingHorizontal: 8, paddingVertical: 3, borderRadius: 4, marginRight: 5, marginBottom: 5 },
   tagText: { color: COLORS.TEXT_PRIMARY, fontSize: 12, fontWeight: '500', },
 
-  infoHours: { 
-    padding: 10, 
-    backgroundColor: COLORS.ACCENT_BRIGHT, 
-    borderTopWidth: 1, 
-    borderTopColor: COLORS.SURFACE 
+  infoHours: {
+    padding: 10,
+    backgroundColor: COLORS.ACCENT_BRIGHT,
+    borderTopWidth: 1,
+    borderTopColor: COLORS.SURFACE
   },
-  infoHoursText: { 
-    color: COLORS.BACKGROUND, 
-    fontSize: 14, 
-    fontWeight: '700' 
+  infoHoursText: {
+    color: COLORS.BACKGROUND,
+    fontSize: 14,
+    fontWeight: '700'
   },
 
   // --- ESTILOS DO MODAL ---
@@ -290,7 +290,7 @@ const styles = StyleSheet.create({
   closeButton: { padding: 10 },
   closeButtonText: { fontSize: 20, color: COLORS.TEXT_SECONDARY, fontWeight: 'bold' },
   modalScroll: { paddingBottom: 40 },
-  
+
   modalTextDescription: {
     fontSize: 16,
     color: COLORS.TEXT_SECONDARY,
@@ -311,16 +311,16 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     textTransform: 'uppercase',
   },
-  
+
   bulletItem: {
-      flexDirection: 'row',
-      alignItems: 'flex-start',
-      marginBottom: 5,
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    marginBottom: 5,
   },
   bulletPoint: {
-      fontSize: 20,
-      marginRight: 8,
-      lineHeight: 22,
+    fontSize: 20,
+    marginRight: 8,
+    lineHeight: 22,
   },
   listItem: {
     fontSize: 16,
@@ -336,9 +336,9 @@ const styles = StyleSheet.create({
     borderTopColor: COLORS.SURFACE,
   },
   modalTextFooter: {
-      fontSize: 12,
-      color: COLORS.TEXT_SECONDARY,
-      fontStyle: 'italic',
-      textAlign: 'center',
+    fontSize: 12,
+    color: COLORS.TEXT_SECONDARY,
+    fontStyle: 'italic',
+    textAlign: 'center',
   }
 });
