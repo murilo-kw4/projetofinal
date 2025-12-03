@@ -18,8 +18,9 @@ export default function TabLayout() {
       <Tabs.Screen
         name="treino"
         options={{
-          title: 'Treino',
-          tabBarIcon: ({ color }) => <MaterialCommunityIcons name="weight-lifter" size={24} color={color} />,
+          title: 'Treinos',
+          tabBarIcon: ({ color }) => <FontAwesome5 name="dumbbell" size={24} color={color} />,
+         
           headerShown: false,
         }}
       />
@@ -28,7 +29,7 @@ export default function TabLayout() {
         name="academia"
         options={{
           title: 'Academias',
-          tabBarIcon: ({ color }) => <FontAwesome5 name="dumbbell" size={24} color={color} />,
+           tabBarIcon: ({ color }) => <MaterialCommunityIcons name="weight-lifter" size={24} color={color} />,
           headerShown: false,
         }}
       />

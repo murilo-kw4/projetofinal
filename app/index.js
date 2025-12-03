@@ -10,59 +10,63 @@ import {
 
 // Paleta de Cores Vivas e Energéticas
 const COLORS = {
-  BACKGROUND: "#1A1A1A", // Fundo preto/cinza escuro
-  TEXT_PRIMARY: "#FFFFFF", // Texto principal branco
-  ACCENT_BRIGHT: "#FF7F00", // Laranja Vibrante / Cítrico (Energia!)
-  ACCENT_DARK: "#D46900", // Laranja mais escuro para pressionar
-  SURFACE: "#282828", // Cor de fundo para cards e superfícies
-  TEXT_SECONDARY: "#C7C7CC", // Cinza claro para descrição
+  BACKGROUND: "#1A1A1A", 
+  TEXT_PRIMARY: "#FFFFFF", 
+  ACCENT_BRIGHT: "#FF7F00", // Laranja Vibrante
+  ACCENT_DARK: "#D46900", 
+  SURFACE: "#282828", 
+  TEXT_SECONDARY: "#C7C7CC", 
 };
 
-export default function Home() {
+export default function InviteScreen() {
+    
+    const handleEntry = () => {
+        // Função que será chamada ao tocar no bloco principal (ação de entrar)
+        console.log("Usuário clicou para entrar no site/app!");
+    };
+
   return (
     <SafeAreaView style={styles.safeArea}>
-      <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+      <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
         
-        {/* TÍTULO */}
-        <Text style={styles.title}>FitLife</Text>
-        <Text style={styles.greeting}>Bem-vindo(a)! Escolha seu próximo passo.</Text>
-
-        {/* --- SEÇÃO DE NAVEGAÇÃO (Listas Limpas) --- */}
-        <View style={styles.navigationSection}>
-            <Text style={styles.sectionHeader}>Treino & Aprendizado</Text>
-            
-            {/* CARD - TREINOS */}
-            <TouchableOpacity style={styles.navigationCard}>
-                <Text style={styles.cardText}>🏋️ Montar Treino Personalizado</Text>
-            </TouchableOpacity>
-
-            {/* CARD - GUIA DE EXERCÍCIOS */}
-            <TouchableOpacity style={styles.navigationCard}>
-                <Text style={styles.cardText}>📚 Guia de Exercícios e Dicas</Text>
-            </TouchableOpacity>
-            
-            {/* CARD - PROGRESSO */}
-            <TouchableOpacity style={styles.navigationCard}>
-                <Text style={styles.cardText}>📈 Acompanhar Meu Progresso</Text>
-            </TouchableOpacity>
-        </View>
-
-        {/* --- SEÇÃO DE AÇÃO PRINCIPAL --- */}
+        {/* TÍTULO PRINCIPAL */}
+        <Text style={styles.appTitle}>FitLife</Text>
         
-        {/* BOTÃO PRINCIPAL DE AÇÃO */}
-        <TouchableOpacity style={styles.primaryButton}>
-          <Text style={styles.buttonText}>Começar Treino do Dia</Text>
+        {/* TEXTO DE CONVITE SECUNDÁRIO */}
+        <Text style={styles.tagline}>Seu progresso começa aqui! 🚀</Text>
+        
+        {/* --- SEÇÃO PRINCIPAL DE CONVITE (CTA Clicável) --- */}
+        <TouchableOpacity 
+            style={styles.invitationBlock}
+            onPress={handleEntry}
+            activeOpacity={0.8}
+        >
+            {/* FRASE ATUALIZADA AQUI */}
+            <Text style={styles.headline}>
+                Encontre o treino ideal e alcance seus 
+                <Text style={styles.accentText}> objetivos</Text>.
+            </Text>
+            
+            <Text style={styles.ctaMessage}>
+                Bem-vindo ao seu espaço de evolução. Aqui você encontra treinos, informações e as melhores academias da cidade para começar ou aprimorar sua jornada no mundo fitness.
+            </Text>
+
+            <View style={styles.horizontalRule} />
+
+           
         </TouchableOpacity>
 
-        {/* --- DESTAQUE RÁPIDO (Minimalista) --- */}
+        {/* --- DESTAQUES/BENEFÍCIOS --- */}
         <View style={styles.highlightSection}>
-          <Text style={styles.highlightTitle}>🔥 Dica Rápida:</Text>
-          <Text style={styles.highlightText}>
-            Não pule o aquecimento! 5 minutos de cardio leve previnem lesões e otimizam a performance.
-          </Text>
-          <TouchableOpacity>
-             <Text style={styles.linkText}>Ver mais dicas</Text>
-          </TouchableOpacity>
+            <Text style={styles.sectionHeader}>O que você vai encontrar:</Text>
+            
+            <View style={styles.benefitCard}>
+                <Text style={styles.cardText}>✅ Diferentes tipo de treinos</Text>
+            </View>
+
+            <View style={styles.benefitCard}>
+                <Text style={styles.cardText}>📚 As melhores academias</Text>
+            </View>
         </View>
 
       </ScrollView>
@@ -75,95 +79,104 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: COLORS.BACKGROUND,
   },
-  container: {
-    flex: 1,
+  scrollContent: {
+    flexGrow: 1,
     paddingHorizontal: 20,
+    justifyContent: 'space-around', 
+    paddingVertical: 50,
   },
   
-  // --- TÍTULOS E SAUDAÇÃO ---
-  title: {
-    fontSize: 42,
-    color: COLORS.ACCENT_BRIGHT, // Título na cor viva
+  // --- TÍTULO PRINCIPAL ---
+  appTitle: {
+    fontSize: 48,
+    color: COLORS.ACCENT_BRIGHT, 
     fontWeight: "900", 
-    marginTop: 40,
-    textAlign: "left",
+    textAlign: "left", 
+    marginBottom: 5, 
   },
-  greeting: {
-    fontSize: 18,
-    color: COLORS.TEXT_SECONDARY,
+  
+  // --- TAGLINE ---
+  tagline: {
+    fontSize: 20,
+    color: COLORS.TEXT_PRIMARY, 
     fontWeight: "500",
-    marginBottom: 40,
     textAlign: "left",
+    marginBottom: 40, 
   },
 
-  // --- NAVEGAÇÃO ---
-  navigationSection: {
-    marginBottom: 40,
-  },
-  sectionHeader: {
-    fontSize: 16,
-    color: COLORS.TEXT_SECONDARY,
-    fontWeight: "700",
-    marginBottom: 10,
-    textTransform: 'uppercase', // Estilo profissional
-  },
-  navigationCard: {
-    backgroundColor: COLORS.SURFACE,
-    paddingVertical: 18,
-    paddingHorizontal: 15,
-    borderRadius: 8,
-    marginBottom: 10, 
-  },
-  cardText: {
-    color: COLORS.TEXT_PRIMARY,
-    fontSize: 17,
-    fontWeight: "600",
-  },
-
-  // --- BOTÃO PRINCIPAL ---
-  primaryButton: {
-    backgroundColor: COLORS.ACCENT_BRIGHT,
-    padding: 20,
+  // --- BLOCO DE CONVITE PRINCIPAL ---
+  invitationBlock: {
+    backgroundColor: COLORS.SURFACE, 
+    padding: 30,
     borderRadius: 12,
     alignItems: "center",
-    marginTop: 10,
-    marginBottom: 40,
-    // Efeito de sombra vibrante
-    elevation: 8, 
+    marginBottom: 50,
+    borderWidth: 2, 
+    borderColor: COLORS.ACCENT_BRIGHT, 
+    
+    elevation: 10, 
     shadowColor: COLORS.ACCENT_BRIGHT,
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.6,
     shadowRadius: 8,
   },
-  buttonText: {
-    color: COLORS.BACKGROUND, // Texto escuro em fundo claro/vibrante
-    fontSize: 20,
-    fontWeight: "bold",
+  headline: {
+    fontSize: 28, // Mantido 28, pois a frase é curta
+    color: COLORS.TEXT_PRIMARY,
+    fontWeight: "800",
+    textAlign: "center",
+    marginBottom: 15,
+    // Removido lineHeight, pois não é mais necessário para a frase curta
+  },
+  accentText: {
+    color: COLORS.ACCENT_BRIGHT,
+  },
+  ctaMessage: {
+    fontSize: 18,
+    color: COLORS.TEXT_SECONDARY,
+    textAlign: "center",
+    marginBottom: 20,
+    fontWeight: '500',
+  },
+  horizontalRule: {
+    height: 1,
+    width: '80%',
+    backgroundColor: COLORS.TEXT_SECONDARY,
+    opacity: 0.3,
+    marginVertical: 15,
+  },
+  smallText: {
+    fontSize: 14,
+    color: COLORS.TEXT_SECONDARY,
+    textAlign: "center",
   },
 
-  // --- DESTAQUE RÁPIDO ---
+  // --- DESTAQUES/BENEFÍCIOS (Cards) ---
   highlightSection: {
-    backgroundColor: COLORS.SURFACE,
-    borderRadius: 12,
-    padding: 20,
     marginBottom: 30,
+    paddingHorizontal: 5, 
   },
-  highlightTitle: {
-    fontSize: 18,
-    fontWeight: "bold",
-    color: COLORS.ACCENT_BRIGHT,
-    marginBottom: 8,
-  },
-  highlightText: {
-    fontSize: 15,
+  sectionHeader: {
+    fontSize: 16,
     color: COLORS.TEXT_SECONDARY,
-    lineHeight: 22,
-    marginBottom: 10,
+    fontWeight: "700",
+    marginBottom: 15,
+    textTransform: 'uppercase',
+    textAlign: 'left',
   },
-  linkText: {
-    color: COLORS.ACCENT_BRIGHT,
-    fontSize: 15,
-    fontWeight: '600',
-    marginTop: 5,
-  }
+  benefitCard: {
+    backgroundColor: COLORS.SURFACE,
+    paddingVertical: 18,
+    paddingHorizontal: 15,
+    borderRadius: 8,
+    marginBottom: 10, 
+    borderLeftWidth: 5, 
+    borderLeftColor: COLORS.ACCENT_BRIGHT,
+  },
+  cardText: {
+    color: COLORS.TEXT_PRIMARY,
+    fontSize: 17,
+    fontWeight: "600",
+    textAlign: 'left',
+  },
 });

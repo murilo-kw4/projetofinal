@@ -9,7 +9,6 @@ import {
   Image,
   Modal,
 } from "react-native";
-
 // Paleta de Cores (Reutilizada)
 const COLORS = {
   BACKGROUND: "#1A1A1A", 
